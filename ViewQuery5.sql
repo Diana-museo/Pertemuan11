@@ -1,7 +1,9 @@
---View untuk melihat metode pembayaran dengan metode 'Tunai'
-CREATE VIEW ViewMetodePembayaran AS
-SELECT idPembayaran, metodePembayaran
-FROM Pembayaran
-WHERE metodePembayaran = 'tunai'
+--View untuk melihat kamar yang 'Terpesan' atau 'Booked' beserta nama tamu
 
-SELECT * FROM ViewMetodePembayaran
+CREATE VIEW ViewKamarTerpesan AS
+SELECT k.idKamar, k.statusKamar, t.namaTamu
+FROM Kamar k
+JOIN Pemesanan p ON k.idKamar = p.idKamar
+JOIN Tamu t ON p.idTamu = t.idTamu;
+
+SELECT * FROM ViewKamarTerpesan
